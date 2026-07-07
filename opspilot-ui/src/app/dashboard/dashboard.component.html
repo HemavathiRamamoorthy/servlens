@@ -1,0 +1,32 @@
+<h2>OpsPilot Dashboard</h2>
+
+<!-- Show error message if API is down -->
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+
+<!-- Show table only if services are loaded -->
+<table *ngIf="services?.length">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Status</th>
+      <th>Version</th>
+      <th>Response (ms)</th>
+      <th>CPU (%)</th>
+      <th>Memory (%)</th>
+      <th>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of services">
+      <td>{{ service.serviceName }}</td>
+      <td>{{ service.status }}</td>
+      <td>{{ service.version }}</td>
+      <td>{{ service.responseTime }}</td>
+      <td>{{ service.cpuUsage }}</td>
+      <td>{{ service.memoryUsage }}</td>
+      <td>{{ service.lastUpdated | date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>
